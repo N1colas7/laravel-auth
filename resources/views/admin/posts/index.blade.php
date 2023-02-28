@@ -3,7 +3,7 @@
     <div class="contaier">
         <div class="row">
             <div class="col-12 my-5">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-around">
                     <div>
                         <h2>Elenco Progetti</h2>
                     </div>
@@ -12,25 +12,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <table class="table table-striped">
-                    <thead>
+            <div class="col-12 flex-wrap" >
+                {{--<table class="table table-striped">-}}
+                    {{--<thead>
                         <th>Id</th>
                         <th>Titolo</th>
                         <th>Titolo</th>
                         <th>Titolo</th>
                     </thead>
-                    <tbody>
+                    <tbody>--}}
                         @foreach ($posts as $project)
-                            <tr>
+                            <div class="card m-3">
+                                <div><strong>Id:</strong>{{$project->id}}</div>
+                                <div><strong>Titolo:</strong>{{$project->title}}</div>
+                                <div><strong>Titolo:</strong>{{$project->slug}}</div>
+                            </div>
+                            {{--<tr>
                                 <td>{{$project->id}}</td>
                                 <td>{{$project->title}}</td>
                                 <td>{{$project->slug}}</td>
-                                <td>{{--Segnaposto per azioni--}}</td>
-                            </tr>
+                                <td>{{--Segnaposto per azioni--}}{{--</td>
+                            </tr> --}}
                         @endforeach
-                    </tbody>
-                </table>
+                    {{--</tbody>
+                </table>--}}
             </div>
         </div>
     </div>
