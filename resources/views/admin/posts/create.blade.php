@@ -5,6 +5,15 @@
         <div class="col-12 my-5">
             <h2>Aggiungi Nuovo Progetto</h2>
         </div>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="list-unstyled">
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="col-12">
             <form action="{{ route('admin.posts.store')}}" method="POST">
                 @csrf
@@ -13,6 +22,9 @@
                         Titolo
                     </label>
                     <input type="text" class="form-control" placeholder="Titolo" id="title" name="title">
+                    @error('title')
+                        <div class="text-danger">{{$message}}</div>
+                    @enderror
                 </div>
                 <div class="form-group mt-3">
                     <label class="control-label">
