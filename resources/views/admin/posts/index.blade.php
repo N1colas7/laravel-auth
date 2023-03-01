@@ -12,6 +12,11 @@
                     </div>
                 </div>
             </div>
+            @if(session('message'))
+                <div class="alert alert-success">
+                    {{session('message')}}
+                </div>
+            @endif
             <div class="col-12 flex-wrap" >
                 {{--<table class="table table-striped">-}}
                     {{--<thead>
@@ -26,10 +31,26 @@
                                 <div><strong>Id:</strong>{{$project->id}}</div>
                                 <div><strong>Titolo:</strong>{{$project->title}}</div>
                                 <div><strong>Titolo:</strong>{{$project->slug}}</div>
+                                <div class="d-flex">
                                 <div class="m-1">
-                                    <a href="{{ route('admin.posts.show', $project->slug)}}" title="Visualizza Progetto" class="btn btn-primary btn-square">
+                                    <a href="{{ route('admin.posts.show', $project->slug)}}" title="Visualizza Progetto" class="btn btn-primary btn-sm btn-square">
                                             <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="m-1">
+                                    <a href="{{ route('admin.posts.edit', $project->slug)}}" title="Modifica Progetto" class="btn btn-warning btn-sm btn-square">
+                                            <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                                <div class="m-1">
+                                    <form action="{{ route('admin.posts.destroy', $project->slug) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-square">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                                 </div>
                             </div>
                             {{--<tr>
