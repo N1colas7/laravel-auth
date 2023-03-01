@@ -26,6 +26,11 @@
                                 <div><strong>Id:</strong>{{$project->id}}</div>
                                 <div><strong>Titolo:</strong>{{$project->title}}</div>
                                 <div><strong>Titolo:</strong>{{$project->slug}}</div>
+                                <div class="m-1">
+                                    <a href="{{ route('admin.posts.show', $project->slug)}}" title="Visualizza Progetto" class="btn btn-primary btn-square">
+                                            <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
                             </div>
                             {{--<tr>
                                 <td>{{$project->id}}</td>
